@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'my-app',
+  template: `<home></home>` /* cambiar a router-outlet más adelante al mirar las rutas */
 })
 export class AppComponent {
-  title = 'app';
 }
