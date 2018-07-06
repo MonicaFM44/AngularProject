@@ -37,10 +37,13 @@ export class NewsListComponent {
         }
     ];
 
+    constructor() {
+        this.filteredNews= this.news;
+    }
+
     performFilter(filterBy: string): INew[] {
-        /*filterBy = filterBy.toLocaleLowerCase();
-        return this.news.filter((new: INew) =>
-              new.title.toLocaleLowerCase().indexOf(filterBy) !== -1);*/
-        return this.news;
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.news.filter( (myNew: INew) => 
+            myNew.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
 }

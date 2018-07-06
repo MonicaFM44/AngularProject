@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class='table-responsive'>
-            <table class='table' *ngIf='news && news.length'>
+            <table class='table' *ngIf= 'news && news.length'>
                 <thead>
                     <tr>
                         <th>Title</th>         <!--poner algún botón de algo-->
@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let new of news'>
+                    <tr *ngFor='let new of filteredNews'>
                         <td>{{ new.title }}</td>
                         <td>{{ new.source }}</td>
                         <td>{{ new.author }}</td>
