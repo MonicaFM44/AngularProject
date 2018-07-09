@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { INew } from "../../new";
+import { NewsService } from "../../news.service";
 
 
 @Component({
@@ -10,7 +11,6 @@ import { INew } from "../../new";
 export class NewsListComponent {
     pageTitle: string = 'News List';
     filteredNews: INew[];
-    
     _listFilter: string;
     get listFilter(): string {
         return this._listFilter;
@@ -19,31 +19,20 @@ export class NewsListComponent {
         this._listFilter = value;
         this.filteredNews= this.filteredNews = this.listFilter ? this.performFilter(this.listFilter) : this.news;
     }
-    
-    news: INew[] = [
-        {
-            "id": 1,
-            "title": "asdasd",
-            "source": "asdasd",
-            "author": "asdasd", 
-            "date": "2018-07-06"
-        },
-        {
-            "id": 2,
-            "title": "asdasd",
-            "source": "asdasd",
-            "author": "asdasd", 
-            "date": "2018-07-07"
-        }
-    ];
+    news: INew[] = [];
 
-    constructor() {
-        this.filteredNews= this.news;
+    constructor(private _newsService: NewsService) {
     }
 
     performFilter(filterBy: string): INew[] {
         filterBy = filterBy.toLocaleLowerCase();
         return this.news.filter( (myNew: INew) => 
             myNew.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    }
+
+    ngOnInit(): void {
+        this.news = this._newsService.getNews();
+        this.filteredNews = this.news;
+        //6d7a5b2927e448debfa6dde2b2a4d7bf
     }
 }
