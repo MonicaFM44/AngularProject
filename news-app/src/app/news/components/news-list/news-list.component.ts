@@ -31,8 +31,9 @@ export class NewsListComponent {
     }
 
     ngOnInit(): void {
-        this.news = this._newsService.getNews();
-        this.filteredNews = this.news;
-        //6d7a5b2927e448debfa6dde2b2a4d7bf
+        this._newsService.getNews().subscribe(data1 => {
+            this.news = data1;
+            this.filteredNews = this.news;
+        });
     }
 }
