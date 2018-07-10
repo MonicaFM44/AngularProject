@@ -17,14 +17,12 @@ export class NewsService {
     return this._http.get(this._newsUrl).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))), // tslint:disable-line
       map((data: any) => {
-        return data.articles.map(article => {
-          const newArticle: INew = {
-            title: article.title,
-            source: article.source.name,
-            author: article.author,
-            date: article.publishedAt
-          };
-        });
+        return data.articles.map(article => ({
+          title: article.title,
+          source: article.source.name,
+          author: article.author,
+          date: article.publishedAt
+        }));
       }),
       catchError((err: HttpErrorResponse) => {
         throw err;
