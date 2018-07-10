@@ -1,0 +1,48 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{ pageTitle }}
+        <!--{{ article.title }}
+        *ngIf="article"-->
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">Title:</div>
+                    <div class="col-md-6">{{ article.title }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Author:</div>
+                    <div class="col-md-6">{{ article.author }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Date:</div>
+                    <div class="col-md-6">{{ article.date | date: 'medium' }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Source:</div>
+                    <div class="col-md-6">{{ article.source }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Description:</div>
+                    <div class="col-md-6">{{ article.description }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">URL:</div>
+                    <div class="col-md-6">{{ article.url }}</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <img class="center-block img-responsive" [style.width.px]="200" [style.margin.px]="2" [src]='article.urlImage' [title]='article.title'>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <a class="btn btn-default" (click)="onBack()" style="width:80px">
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>
+    </div>
+</div>

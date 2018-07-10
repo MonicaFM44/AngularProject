@@ -33,6 +33,10 @@ export class NewsService {
     );
   }
 
+  getArticle(title: string): Observable<INew> {
+    return this.getNews().pipe(map((news: INew[]) => news.find(article => article.title === title)));
+  }
+
   /*private handleError(err: HttpErrorResponse) { 
         console.log(err.message);
         return Observable.throw(err.message);

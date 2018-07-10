@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { INew } from '../../INew';
 import { NewsService } from '../../news.service';
 
@@ -7,7 +7,7 @@ import { NewsService } from '../../news.service';
   templateUrl: './news-list.component.html',
   styleUrls: ['./news-list.component.scss']
 })
-export class NewsListComponent {
+export class NewsListComponent implements OnInit {
   readonly pageTitle: string = 'News List';
   filteredNews: INew[];
   _listFilter: string;
