@@ -1,8 +1,6 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary" *ngIf="article">
     <div class="panel-heading">
         {{ pageTitle }}
-        <!--{{ article.title }}
-        *ngIf="article"-->
     </div>
 
     <div class="panel-body">
@@ -30,7 +28,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">URL:</div>
-                    <div class="col-md-6">{{ article.url }}</div>
+                    <div class="col-md-6"><a [href]='article.url'>{{ article.url }}</a></div>
                 </div>
             </div>
 
