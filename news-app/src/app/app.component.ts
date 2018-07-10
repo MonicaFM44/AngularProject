@@ -3,7 +3,9 @@ import { NewsService } from './news/news.service';
 
 @Component({
   selector: 'my-app',
-  template: `<home></home>` /* cambiar a router-outlet más adelante al mirar las rutas */,
+  templateUrl: './app.component.html',
   providers: [NewsService]
 })
-export class AppComponent {}
+export class AppComponent {
+  readonly pageTitle: string = 'Latest news';
+}

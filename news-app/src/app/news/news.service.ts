@@ -19,9 +19,12 @@ export class NewsService {
       map((data: any) => {
         return data.articles.map(article => ({
           title: article.title,
+          description: article.description,
           source: article.source.name,
           author: article.author,
-          date: article.publishedAt
+          date: article.publishedAt,
+          url: article.url,
+          urlImage: article.urlToImage
         }));
       }),
       catchError((err: HttpErrorResponse) => {
