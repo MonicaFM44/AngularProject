@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { INew } from '../../new';
+import { INew } from '../../INew';
 import { NewsService } from '../../news.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { NewsService } from '../../news.service';
   styleUrls: ['./news-list.component.scss']
 })
 export class NewsListComponent {
-  pageTitle: string = 'News List';
+  readonly pageTitle: string = 'News List';
   filteredNews: INew[];
   _listFilter: string;
   get listFilter(): string {
@@ -28,9 +28,12 @@ export class NewsListComponent {
   }
 
   ngOnInit(): void {
-    this._newsService.getNews().subscribe(data1 => {
-      this.news = data1;
-      this.filteredNews = this.news;
-    });
+    this._newsService.getNews().subscribe(
+      data1 => {
+        this.news = data1;
+        this.filteredNews = this.news;
+      },
+      error => console.error(error)
+    );
   }
 }
