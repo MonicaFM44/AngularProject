@@ -5,5 +5,5 @@ import { Component } from "@angular/core";
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
-    pageTitle: string = 'News';
+    readonly pageTitle: string = 'News';
 }
