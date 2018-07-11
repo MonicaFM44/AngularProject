@@ -1,16 +1,12 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        {{ pageTitle }}
-        <!--{{ article.title }}
-        *ngIf="article"-->
-    </div>
+<div class="card" *ngIf="article" style="margin-top: 40px;">
+    <div class="card-header" style="margin-bottom: 40px;">{{ pageTitle }}</div>
 
-    <div class="panel-body">
+    <div class="card-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-3">Title:</div>
-                    <div class="col-md-6">{{ article.title }}</div>
+                    <div class="col-md-8">{{ article.title }}</div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">Author:</div>
@@ -26,23 +22,23 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">Description:</div>
-                    <div class="col-md-6">{{ article.description }}</div>
+                    <div class=" col-md-8">{{ article.description }}</div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">URL:</div>
-                    <div class="col-md-6">{{ article.url }}</div>
+                <div class="row ">
+                    <div class="col-md-3 ">URL:</div>
+                    <div class="col-md-8"><a [href]='article.url'>{{ article.url }}</a></div>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <img class="center-block img-responsive" [style.width.px]="200" [style.margin.px]="2" [src]='article.urlImage' [title]='article.title'>
+            <div class="col-md-6 ">
+                <img class="center-block img-responsive " [style.width.px]="400 " [style.margin.px]="2 " [src]='article.urlImage' [title]='article.title'>
+            </div>
+
+            <div class="col-md-6" style="margin-top: 20px;">
+                <a class="btn btn-light" (click)="onBack()" style="width:80px">
+                    <i class="glyphicon glyphicon-chevron-left"></i> Back
+                </a>
             </div>
         </div>
-    </div>
-
-    <div class="panel-footer">
-        <a class="btn btn-default" (click)="onBack()" style="width:80px">
-            <i class="glyphicon glyphicon-chevron-left"></i> Back
-        </a>
     </div>
 </div>

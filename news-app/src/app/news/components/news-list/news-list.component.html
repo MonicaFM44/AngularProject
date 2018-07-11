@@ -1,7 +1,7 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary" style="margin-top: 40px;">
     <div class="panel-body">
-        <div class="row">
-            <div class="col-md-2">Filter by:</div>
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-1">Filter by:</div>
             <div class="col-md-4">
                 <input type="text" [(ngModel)]="listFilter" />
             </div>
@@ -15,21 +15,20 @@
             <table class="table" *ngIf="news && news.length">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <!--poner algún botón de algo-->
-                        <th>Source</th>
-                        <th>Author</th>
-                        <th>Date</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Source</th>
+                        <th scope="col"> Author</th>
+                        <th scope="col">Date</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="filteredNews">
                     <tr *ngFor="let article of filteredNews">
-                        <td>
+                        <td scope="row">
                             <a [routerLink]="['/news', article.title]"> {{ article.title }}</a>
                         </td>
                         <td>{{ article.source }}</td>
                         <td>{{ article.author }}</td>
-                        <td>{{ article.date | date: 'medium' }}</td>
+                        <td>{{ article.date | date: 'shortDate' }}</td>
                     </tr>
                 </tbody>
             </table>
