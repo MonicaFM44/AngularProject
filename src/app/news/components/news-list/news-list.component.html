@@ -1,9 +1,9 @@
-<div class="panel panel-primary" style="margin-top: 40px;">
+<div class="panel panel-primary" id="generalContainer">
     <div class="panel-body">
-        <div class="row" style="margin-bottom: 20px;">
+        <div class="row" id="filter">
             <div class="col-md-1">Filter by:</div>
             <div class="col-md-4">
-                <input type="text" [(ngModel)]="listFilter" />
+                <input [(ngModel)]="listFilter" type="text" />
             </div>
         </div>
         <div class="row">
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table" *ngIf="news && news.length">
+            <table *ngIf="news && news.length" class="table">
                 <thead>
                     <tr>
                         <th scope="col">Title</th>

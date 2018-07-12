@@ -16,7 +16,7 @@ export class NewsListComponent implements OnInit {
   }
   set listFilter(value: string) {
     this._listFilter = value;
-    this.filteredNews = this.filteredNews = this.listFilter ? this.performFilter(this.listFilter) : this.news;
+    this.filteredNews = this.listFilter ? this.performFilter(this.listFilter) : this.news;
   }
   news: INew[] = [];
 
@@ -29,8 +29,8 @@ export class NewsListComponent implements OnInit {
 
   ngOnInit(): void {
     this._newsService.getNews().subscribe(
-      data1 => {
-        this.news = data1;
+      news => {
+        this.news = news;
         this.filteredNews = this.news;
       },
       error => console.error(error)

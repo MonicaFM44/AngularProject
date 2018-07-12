@@ -1,5 +1,14 @@
 $colorHeadTable: #337ab7;
-
+$marginTop: 40px;
+$marginBottom: 20px;
 thead {
   color: $colorHeadTable;
+}
+
+#generalContainer {
+  margin-top: $marginTop;
+}
+
+#filter {
+  margin-bottom: $marginBottom;
 }

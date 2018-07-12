@@ -1,5 +1,5 @@
-<div class="card" *ngIf="article" style="margin-top: 40px;">
-    <div class="card-header" style="margin-bottom: 40px;">{{ pageTitle }}</div>
+<div *ngIf="article" class="card" id="mainContainer">
+    <div class="card-header" id="cardHeader">{{ pageTitle }}</div>
 
     <div class="card-body">
         <div class="row">
@@ -31,13 +31,11 @@
             </div>
 
             <div class="col-md-6 ">
-                <img class="center-block img-responsive " [style.width.px]="400 " [style.margin.px]="2 " [src]='article.urlImage' [title]='article.title'>
+                <img [src]="article.urlImage" [title]="article.title" class="center-block img-responsive" id="articleImage">
             </div>
 
-            <div class="col-md-6" style="margin-top: 20px;">
-                <a class="btn btn-light" (click)="onBack()" style="width:80px">
-                    <i class="glyphicon glyphicon-chevron-left"></i> Back
-                </a>
+            <div class="col-md-6">
+                <a class="btn btn-light" (click)="onBack()" id="backButton">Back</a>
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@ export class NewsDetailComponent implements OnInit {
   }
 
   getArticle(title: string) {
-    this._newsService.getArticle(title).subscribe(data1 => (this.article = data1), error => console.error(error));
+    this._newsService.getArticle(title).subscribe(article => (this.article = article), error => console.error(error));
   }
 
   onBack(): void {
