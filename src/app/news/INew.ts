@@ -6,4 +6,5 @@ export interface INew {
   date: string;
   url: string;
   urlImage: string;
+  saved: boolean;
 }

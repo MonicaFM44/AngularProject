@@ -3,20 +3,20 @@ import { INew } from '../../INew';
 import { NewsService } from '../../news.service';
 
 @Component({
-  selector: 'news-list',
-  templateUrl: './news-list.component.html',
-  styleUrls: ['./news-list.component.scss']
+  selector: 'news-favorites',
+  templateUrl: './news-favorites.component.html',
+  styleUrls: ['./news-favorites.component.scss']
 })
-export class NewsListComponent implements OnInit {
-  readonly pageTitle: string = 'News List';
+export class NewsFavoritesComponent implements OnInit {
+  readonly pageTitle: string = 'News favorites';
   filteredNews: INew[];
-  _listFilter: string;
-  get listFilter(): string {
-    return this._listFilter;
+  _favoritesFilter: string;
+  get favoritesFilter(): string {
+    return this._favoritesFilter;
   }
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.filteredNews = this.listFilter ? this.performFilter(this.listFilter) : this.news;
+  set favoritesFilter(value: string) {
+    this._favoritesFilter = value;
+    this.filteredNews = this.favoritesFilter ? this.performFilter(this.favoritesFilter) : this.news;
   }
   news: INew[] = [];
 
@@ -28,17 +28,12 @@ export class NewsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._newsService.getNews().subscribe(
+    this._newsService.getFavorites().subscribe(
       news => {
         this.news = news;
         this.filteredNews = this.news;
       },
       error => console.error(error)
     );
-  }
-
-  save(article) {
-    article.saved = true;
-    // this._newsService.saveArticle(article);
   }
 }
