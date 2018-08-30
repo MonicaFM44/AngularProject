@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsDetailComponent } from './components/news-detail/news-detail.component';
-import { NewsFavoritesComponent } from './components/news-favorites/news-favorites.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NewsService } from './news.service';
@@ -14,10 +13,11 @@ import { NewsService } from './news.service';
     RouterModule.forChild([
       { path: 'news', component: NewsListComponent },
       { path: 'news/:title', component: NewsDetailComponent },
-      { path: 'favorites', component: NewsFavoritesComponent }
+      { path: 'favorites', component: NewsListComponent }
+      // { path: 'favorites/:title', component: NewsDetailComponent }
     ])
   ],
-  declarations: [NewsListComponent, NewsDetailComponent, NewsFavoritesComponent],
+  declarations: [NewsListComponent, NewsDetailComponent],
   providers: [NewsService]
 })
 export class NewsModule {}

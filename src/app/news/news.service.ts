@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { INew } from './INew';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class NewsService {
   private _newsUrl = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=' + environment.apiKey;
   private _apiUrl = 'http://localhost:8000/api/favorites';
+  newsCache: INew[];
 
   constructor(private _http: HttpClient) {}
 
@@ -26,6 +27,7 @@ export class NewsService {
           saved: false
         }));
       }),
+      tap((data: INew[]) => (this.newsCache = data)),
       catchError((err: HttpErrorResponse) => {
         throw err;
       })
@@ -33,6 +35,10 @@ export class NewsService {
   }
 
   getArticle(title: string): Observable<INew> {
+    const myArt: INew = this.newsCache ? this.newsCache.find(article => article.title === title) : null;
+    if (myArt) {
+      return of(myArt);
+    }
     return this.getNews().pipe(map((news: INew[]) => news.find(article => article.title === title)));
   }
 
@@ -42,5 +48,9 @@ export class NewsService {
 
   getFavorites(): Observable<INew[]> {
     return this._http.get<INew[]>(this._apiUrl);
+  }
+
+  getOneFavorite(title: string): Observable<INew> {
+    return this._http.get<INew>(this._apiUrl + '/' + title);
   }
 }

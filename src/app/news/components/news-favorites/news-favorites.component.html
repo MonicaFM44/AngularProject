@@ -24,7 +24,7 @@
                 <tbody *ngIf="filteredNews">
                     <tr *ngFor="let article of filteredNews">
                         <td scope="row">
-                            <a [routerLink]="['/news', article.title]"> {{ article.title }}</a>
+                            <a [routerLink]="['/favorites', article.title]"> {{ article.title }}</a>
                         </td>
                         <td>{{ article.source }}</td>
                         <td>{{ article.author }}</td>

@@ -38,7 +38,7 @@ export class NewsListComponent implements OnInit {
   }
 
   save(article) {
-    article.saved = true;
     // this._newsService.saveArticle(article);
+    article.saved = true;
   }
 }
