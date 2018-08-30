@@ -22,8 +22,8 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody *ngIf="filteredNews">
-                    <tr *ngFor="let article of filteredNews">
+                <tbody *ngIf="news">
+                    <tr *ngFor="let article of news | filter: listFilter">
                         <td scope="row">
                             <a [routerLink]="['/news', article.title]"> {{ article.title }}</a>
                         </td>

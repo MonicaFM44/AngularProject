@@ -7,15 +7,15 @@ import { NewsService } from '../../news.service';
   templateUrl: './../news-list/news-list.component.html',
   styleUrls: ['./../news-list/news-list.component.scss']
 })
-export class NewsFavoritesComponent implements OnInit {
-  readonly pageTitle: string = 'News favorites';
+export class AllNewsComponent implements OnInit {
+  readonly pageTitle: string = 'News List';
 
   news: INew[] = [];
 
   constructor(private _newsService: NewsService) {}
 
   ngOnInit(): void {
-    this._newsService.getFavorites().subscribe(
+    this._newsService.getNews().subscribe(
       news => {
         this.news = news;
       },
