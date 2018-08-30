@@ -1,0 +1,7 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["@clearpeaks/code-linting-style/tslint.js"],
+  "jsRules": {
+    "no-empty": true
+  }
+}
