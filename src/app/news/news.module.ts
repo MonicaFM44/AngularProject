@@ -16,8 +16,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     RouterModule.forChild([
       { path: 'news', component: AllNewsComponent },
       { path: 'news/:title', component: NewsDetailComponent },
-      { path: 'favorites', component: NewsFavoritesComponent }
-      // { path: 'favorites/:title', component: NewsDetailComponent }
+      { path: 'favorites', component: NewsFavoritesComponent },
+      { path: 'favorites/:title', component: NewsDetailComponent }
     ])
   ],
   declarations: [NewsListComponent, NewsDetailComponent, NewsFavoritesComponent, AllNewsComponent, FilterPipe],

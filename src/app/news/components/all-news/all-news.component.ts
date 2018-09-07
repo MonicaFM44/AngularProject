@@ -9,17 +9,14 @@ import { NewsService } from '../../news.service';
 })
 export class AllNewsComponent implements OnInit {
   readonly pageTitle: string = 'News List';
+  public routerLinkVariable = '/news';
 
   news: INew[] = [];
+  isFavorites: boolean = false;
 
   constructor(private _newsService: NewsService) {}
 
   ngOnInit(): void {
-    this._newsService.getNews().subscribe(
-      news => {
-        this.news = news;
-      },
-      error => console.error(error)
-    );
+    this._newsService.getNews().subscribe(news => (this.news = news), error => console.error(error));
   }
 }

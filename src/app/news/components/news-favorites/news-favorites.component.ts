@@ -9,8 +9,10 @@ import { NewsService } from '../../news.service';
 })
 export class NewsFavoritesComponent implements OnInit {
   readonly pageTitle: string = 'News favorites';
+  public routerLinkVariable = '/favorites';
 
   news: INew[] = [];
+  isFavorites: boolean = true;
 
   constructor(private _newsService: NewsService) {}
 

@@ -51,6 +51,7 @@ export class NewsService {
   }
 
   getOneFavorite(title: string): Observable<INew> {
-    return this._http.get<INew>(this._apiUrl + '/' + title);
+    const newTitle = title.replace(/ /g, '%20');
+    return this._http.get<INew>(this._apiUrl + '/' + newTitle);
   }
 }

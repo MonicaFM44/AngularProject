@@ -12,6 +12,7 @@ import { NewsService } from '../../news.service';
 export class NewsDetailComponent implements OnInit {
   pageTitle: string;
   article: INew;
+  root: string = this._route.snapshot.url[0].path;
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _newsService: NewsService) {}
 
@@ -24,10 +25,22 @@ export class NewsDetailComponent implements OnInit {
   }
 
   getArticle(title: string) {
-    this._newsService.getArticle(title).subscribe(article => (this.article = article), error => console.error(error));
+    if (this.root === 'news') {
+      this._newsService
+        .getArticle(title)
+        .subscribe(article => ((this.article = article), error => console.error(error)));
+    } else {
+      this._newsService
+        .getOneFavorite(title)
+        .subscribe(article => ((this.article = article[0]), error => console.error(error)));
+    }
   }
 
   onBack(): void {
-    this._router.navigate(['/news']);
+    if (this.root === 'news') {
+      this._router.navigate(['/news']);
+    } else {
+      this._router.navigate(['/favorites']);
+    }
   }
 }
