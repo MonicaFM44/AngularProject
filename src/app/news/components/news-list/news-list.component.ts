@@ -6,15 +6,6 @@ import { INew } from '../../INew';
   templateUrl: './news-list.component.html',
   styleUrls: ['./news-list.component.scss']
 })
-export class NewsListComponent implements OnInit {
-  readonly pageTitle: string = 'News List';
-
+export class NewsListComponent {
   @Input() news: INew[] = [];
-
-  ngOnInit(): void {}
-
-  save(article) {
-    // this._newsService.saveArticle(article);
-    article.saved = true;
-  }
 }

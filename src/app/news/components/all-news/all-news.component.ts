@@ -12,11 +12,15 @@ export class AllNewsComponent implements OnInit {
   public routerLinkVariable = '/news';
 
   news: INew[] = [];
-  isFavorites: boolean = false;
 
   constructor(private _newsService: NewsService) {}
 
   ngOnInit(): void {
     this._newsService.getNews().subscribe(news => (this.news = news), error => console.error(error));
+  }
+
+  save(article: INew) {
+    // this._newsService.saveArticle(article);
+    article.saved = true;
   }
 }
