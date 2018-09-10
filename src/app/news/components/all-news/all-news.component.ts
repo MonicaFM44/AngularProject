@@ -20,7 +20,7 @@ export class AllNewsComponent implements OnInit {
   }
 
   save(article: INew) {
-    // this._newsService.saveArticle(article);
     article.saved = true;
+    this._newsService.saveArticle(article).subscribe(res => res, error => console.error(error));
   }
 }
